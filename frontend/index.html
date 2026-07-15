@@ -194,13 +194,11 @@
                                     <i class="fa-solid fa-code input-icon"></i>
                                     <select id="progLang" class="form-select" required>
                                         <option value="" disabled selected>Select Language</option>
-                                        <option value="TypeScript">TypeScript</option>
                                         <option value="JavaScript">JavaScript</option>
+                                        <option value="TypeScript">TypeScript</option>
                                         <option value="Python">Python</option>
-                                        <option value="Go">Go</option>
-                                        <option value="Rust">Rust</option>
                                         <option value="Java">Java</option>
-                                        <option value="C#">C#</option>
+                                        <option value="C++">C++</option>
                                     </select>
                                 </div>
                                 <span class="error-msg">Please select a language</span>
@@ -213,10 +211,9 @@
                                     <i class="fa-brands fa-react input-icon"></i>
                                     <select id="frontendFramework" class="form-select" required>
                                         <option value="" disabled selected>Select Frontend</option>
-                                        <option value="React & Vite">React & Vite</option>
+                                        <option value="React">React</option>
                                         <option value="Next.js">Next.js</option>
                                         <option value="Vue.js">Vue.js</option>
-                                        <option value="SvelteKit">SvelteKit</option>
                                         <option value="Angular">Angular</option>
                                         <option value="Vanilla HTML/CSS/JS">Vanilla HTML/CSS/JS</option>
                                     </select>
@@ -231,13 +228,11 @@
                                     <i class="fa-solid fa-server input-icon"></i>
                                     <select id="backendFramework" class="form-select" required>
                                         <option value="" disabled selected>Select Backend</option>
-                                        <option value="Express.js (Node)">Express.js (Node)</option>
-                                        <option value="NestJS">NestJS</option>
+                                        <option value="Node.js + Express">Node.js + Express</option>
                                         <option value="FastAPI">FastAPI</option>
                                         <option value="Django">Django</option>
                                         <option value="Spring Boot">Spring Boot</option>
-                                        <option value="Go Fiber / Gin">Go Fiber / Gin</option>
-                                        <option value="Serverless Functions">Serverless Functions</option>
+                                        <option value="NestJS">NestJS</option>
                                     </select>
                                 </div>
                                 <span class="error-msg">Please select a backend option</span>
@@ -254,8 +249,7 @@
                                         <option value="PostgreSQL">PostgreSQL</option>
                                         <option value="MySQL">MySQL</option>
                                         <option value="SQLite">SQLite</option>
-                                        <option value="Redis">Redis</option>
-                                        <option value="Supabase DB">Supabase DB</option>
+                                        <option value="Firebase Firestore">Firebase Firestore</option>
                                     </select>
                                 </div>
                                 <span class="error-msg">Please select a database</span>
@@ -268,12 +262,11 @@
                                     <i class="fa-solid fa-cloud-arrow-up input-icon"></i>
                                     <select id="deployPlatform" class="form-select" required>
                                         <option value="" disabled selected>Select Platform</option>
+                                        <option value="AWS Elastic Beanstalk">AWS Elastic Beanstalk</option>
                                         <option value="Vercel">Vercel</option>
+                                        <option value="Docker">Docker</option>
                                         <option value="Render">Render</option>
-                                        <option value="AWS">AWS</option>
-                                        <option value="Heroku">Heroku</option>
-                                        <option value="DigitalOcean">DigitalOcean</option>
-                                        <option value="Docker / Kubernetes Env">Docker / Kubernetes Env</option>
+                                        <option value="Kubernetes">Kubernetes</option>
                                     </select>
                                 </div>
                                 <span class="error-msg">Please select a platform</span>
@@ -281,19 +274,19 @@
 
                             <!-- AI Model -->
                             <div class="form-group">
-                                <label for="aiModel" class="form-label">Target AI Model</label>
+                                <label for="aiModel" class="form-label">Target AI Coding Assistant</label>
                                 <div class="input-wrapper">
                                     <i class="fa-solid fa-brain input-icon"></i>
                                     <select id="aiModel" class="form-select" required>
-                                        <option value="" disabled selected>Select AI Model</option>
-                                        <option value="Gemini 1.5 Pro">Gemini 1.5 Pro</option>
-                                        <option value="Gemini 1.5 Flash">Gemini 1.5 Flash</option>
-                                        <option value="GPT-4o">GPT-4o</option>
-                                        <option value="Claude 3.5 Sonnet">Claude 3.5 Sonnet</option>
-                                        <option value="Llama 3 (Open Source)">Llama 3 (Open Source)</option>
+                                        <option value="" disabled selected>Select AI Coding Assistant</option>
+                                        <option value="ChatGPT">ChatGPT</option>
+                                        <option value="Gemini">Gemini</option>
+                                        <option value="Claude">Claude</option>
+                                        <option value="Perplexity">Perplexity</option>
+                                        <option value="Antigravity IDE">Antigravity IDE</option>
                                     </select>
                                 </div>
-                                <span class="error-msg">Please select an AI model</span>
+                                <span class="error-msg">Please select an AI coding assistant</span>
                             </div>
 
                             <!-- Difficulty -->
@@ -317,6 +310,10 @@
                                 <i class="fa-solid fa-gears"></i>
                                 <span>Generate Developer Prompt Kit</span>
                             </button>
+                            <button type="button" id="btnClearForm" class="btn btn-secondary btn-clear">
+                                <i class="fa-solid fa-trash-can"></i>
+                                <span>Clear Form</span>
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -333,8 +330,20 @@
                 <!-- Prompt Kit Result Section (Initially Hidden) -->
                 <div id="promptKitSection" class="prompt-kit-section hidden">
                     <div class="kit-header">
-                        <h3 class="kit-title"><i class="fa-solid fa-folder-open text-cyan"></i> Generated Kit: <span id="kitProjectTitle">Project Name</span></h3>
-                        <p class="kit-meta">Configured for <strong id="kitModelText">Gemini 1.5 Pro</strong> • Architecture: <span id="kitDiffLabel" class="badge-diff">Intermediate</span></p>
+                        <div class="kit-header-info">
+                            <h3 class="kit-title"><i class="fa-solid fa-folder-open text-cyan"></i> Generated Kit: <span id="kitProjectTitle">Project Name</span></h3>
+                            <p class="kit-meta">Optimized for <strong id="kitModelText">Gemini 1.5 Pro</strong> • Architecture: <span id="kitDiffLabel" class="badge-diff">Intermediate</span></p>
+                        </div>
+                        <div class="kit-header-actions">
+                            <button id="btnCopyEntireKit" class="btn btn-secondary">
+                                <i class="fa-regular fa-copy"></i>
+                                <span>Copy Entire Prompt Kit</span>
+                            </button>
+                            <button id="btnDownloadKit" class="btn btn-primary">
+                                <i class="fa-solid fa-download"></i>
+                                <span>Download Prompt Kit</span>
+                            </button>
+                        </div>
                     </div>
 
                     <div class="prompt-cards-container">
@@ -466,12 +475,7 @@
                     <p class="section-subtitle">Quick access to previously configured prompt environments</p>
                 </div>
 
-                <div class="disclaimer-alert">
-                    <div class="disclaimer-icon"><i class="fa-solid fa-circle-info"></i></div>
-                    <div class="disclaimer-text">
-                        <strong>Sandbox Mode:</strong> These records are simulated client-side placeholders. A persistent history registry will become active after MongoDB backend integration.
-                    </div>
-                </div>
+
 
                 <div class="history-grid" id="historyCardsGrid">
                     <!-- Loaded dynamically via JavaScript -->

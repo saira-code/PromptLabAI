@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // DOM Elements Cache
     const form = document.getElementById('promptGeneratorForm');
+    const btnClearForm = document.getElementById('btnClearForm');
     const loadingState = document.getElementById('loadingState');
     const promptKitSection = document.getElementById('promptKitSection');
     const historyCardsGrid = document.getElementById('historyCardsGrid');
@@ -77,6 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Render Initial History Cards
     renderHistory();
+
+    // Ensure form starts completely empty on page load/refresh (do not persist session data)
+    form.reset();
 
     // ---------------------------------------------------------
     // 2. Prompt Generation Engine (Gemini-Quality Templates)
@@ -185,6 +189,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Clear Form Action
+    if (btnClearForm) {
+        btnClearForm.addEventListener('click', () => {
+            clearForm();
+        });
+    }
+
+    /**
+     * Clears all form inputs and removes validation error indicator classes.
+     */
+    function clearForm() {
+        form.reset();
+        const formGroups = form.querySelectorAll('.form-group');
+        formGroups.forEach(group => {
+            group.classList.remove('invalid');
+        });
+    }
+
     /**
      * Validates all form inputs, returns true if completely valid.
      */
@@ -239,6 +261,22 @@ document.addEventListener('DOMContentLoaded', () => {
         loadingState.classList.remove('hidden');
         loadingState.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
+        // Set up dynamic loading text messages
+        const loadingText = loadingState.querySelector('.loading-text');
+        const progressMessages = [
+            "Analyzing project...",
+            "Designing architecture...",
+            "Generating prompts...",
+            "Finalizing Prompt Kit..."
+        ];
+        let currentMessageIndex = 0;
+        loadingText.textContent = progressMessages[currentMessageIndex];
+
+        const progressInterval = setInterval(() => {
+            currentMessageIndex = (currentMessageIndex + 1) % progressMessages.length;
+            loadingText.textContent = progressMessages[currentMessageIndex];
+        }, 1500);
+
         // POST request to backend API
         fetch('http://localhost:5000/api/generate', {
             method: 'POST',
@@ -249,13 +287,23 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(response => {
             if (!response.ok) {
-                throw new Error(`API error: ${response.statusText}`);
+                throw new Error('API_FAIL');
             }
             return response.json();
         })
         .then(promptKit => {
-            // Hide spinner
+            // Validate response fields
+            if (!promptKit || 
+                !promptKit.planning || typeof promptKit.planning.prompt !== 'string' ||
+                !promptKit.development || typeof promptKit.development.prompt !== 'string' ||
+                !promptKit.improvement || typeof promptKit.improvement.prompt !== 'string' ||
+                !promptKit.deployment || typeof promptKit.deployment.prompt !== 'string') {
+                throw new Error('INVALID_RESPONSE');
+            }
+
+            // Hide spinner and clear timer
             loadingState.classList.add('hidden');
+            clearInterval(progressInterval);
 
             // Set result contents
             kitProjectTitle.textContent = formData.projectName;
@@ -298,15 +346,23 @@ document.addEventListener('DOMContentLoaded', () => {
             historyKits.unshift(newHistoryItem); // Add to beginning
             renderHistory();
 
-            // Reset form fields
-            form.reset();
         })
         .catch(err => {
             console.error("[API Error]:", err);
-            // Hide spinner
+            // Hide spinner and clear timer
             loadingState.classList.add('hidden');
-            // Show toast message
-            showToast("Unable to generate prompts. Please check if the backend server is running.", true);
+            clearInterval(progressInterval);
+
+            // Determine user-friendly error message
+            let errorMessage = "Unable to connect to the backend. Please start the backend server and try again.";
+            if (err.message === 'API_FAIL') {
+                errorMessage = "Something went wrong while generating your Prompt Kit. Please try again.";
+            } else if (err.message === 'INVALID_RESPONSE') {
+                errorMessage = "Received an unexpected response from the server. Please try again.";
+            }
+
+            // Show toast message with error design
+            showToast(errorMessage, true);
         });
     }
 
@@ -432,6 +488,77 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // ---------------------------------------------------------
+    // 5b. Entire Kit Actions: Copy and Download
+    // ---------------------------------------------------------
+
+    function getEntireKitMarkdown() {
+        const projectName = kitProjectTitle.textContent;
+        const planning = promptTextPlanning.textContent;
+        const development = promptTextDevelopment.textContent;
+        const improvement = promptTextImprovement.textContent;
+        const deployment = promptTextDeployment.textContent;
+        
+        return `# ${projectName} Prompt Kit
+
+## Planning Prompt
+${planning}
+
+## Development Prompt
+${development}
+
+## Improvement Prompt
+${improvement}
+
+## Deployment Prompt
+${deployment}`;
+    }
+
+    const btnCopyEntireKit = document.getElementById('btnCopyEntireKit');
+    const btnDownloadKit = document.getElementById('btnDownloadKit');
+
+    if (btnCopyEntireKit) {
+        btnCopyEntireKit.addEventListener('click', () => {
+            const markdownContent = getEntireKitMarkdown();
+            navigator.clipboard.writeText(markdownContent)
+                .then(() => {
+                    showToast("Prompt Kit copied to clipboard!");
+                    const originalHTML = btnCopyEntireKit.innerHTML;
+                    btnCopyEntireKit.innerHTML = '<i class="fa-solid fa-check text-emerald"></i> <span>Copied!</span>';
+                    btnCopyEntireKit.classList.add('copied');
+                    
+                    setTimeout(() => {
+                        btnCopyEntireKit.innerHTML = originalHTML;
+                        btnCopyEntireKit.classList.remove('copied');
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Could not copy entire kit: ', err);
+                    showToast("Failed to copy Prompt Kit.", true);
+                });
+        });
+    }
+
+    if (btnDownloadKit) {
+        btnDownloadKit.addEventListener('click', () => {
+            const markdownContent = getEntireKitMarkdown();
+            const projectName = kitProjectTitle.textContent.trim();
+            // Sanitize filename: replace invalid characters
+            let filename = projectName.replace(/[/\\?%*:|"<>]/g, '-').trim();
+            if (!filename) filename = 'PromptKit';
+            
+            const blob = new Blob([markdownContent], { type: 'text/markdown;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', `${filename}.md`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        });
+    }
 
     /**
      * Shows a customized glassmorphic toast notification.

@@ -5,6 +5,36 @@
 const { GoogleGenAI } = require('@google/genai');
 
 /**
+ * Safely extracts and cleans JSON string from Gemini's response text.
+ * @param {string} text - Raw text from Gemini response
+ * @returns {string} Cleaned JSON string
+ */
+function cleanGeminiResponse(text) {
+    if (typeof text !== 'string') {
+        throw new Error("Gemini response is not a string.");
+    }
+
+    let cleaned = text.trim();
+
+    // 1. Remove markdown code fences if present at the start/end
+    cleaned = cleaned.replace(/^```json\s*/i, '');
+    cleaned = cleaned.replace(/^```\s*/, '');
+    cleaned = cleaned.replace(/```$/, '');
+    cleaned = cleaned.trim();
+
+    // 2. Extract only the JSON object if there's additional text before or after
+    const startIdx = cleaned.indexOf('{');
+    const endIdx = cleaned.lastIndexOf('}');
+
+    if (startIdx === -1 || endIdx === -1 || endIdx < startIdx) {
+        throw new Error("No JSON object structure found in response.");
+    }
+
+    cleaned = cleaned.slice(startIdx, endIdx + 1);
+    return cleaned;
+}
+
+/**
  * Connects to Google Gemini 3.1 Flash-Lite and returns a structured JSON Prompt Kit.
  * @param {Object} data - Sanity-checked project details
  */
@@ -80,8 +110,13 @@ Project Specifications:
             throw new Error("Received an empty response from Gemini API.");
         }
 
+        // Clean the response text to extract valid JSON
+        console.log("[Gemini Service] Raw response from Gemini model:", responseText);
+        const cleanedText = cleanGeminiResponse(responseText);
+        console.log("[Gemini Service] Cleaned JSON string:", cleanedText);
+
         // Parse response content before returning
-        const promptKit = JSON.parse(responseText);
+        const promptKit = JSON.parse(cleanedText);
         
         // Assert JSON contains the required prompt objects
         const requiredKeys = ['planning', 'development', 'improvement', 'deployment'];

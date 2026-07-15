@@ -787,14 +787,22 @@ section {
     margin-top: 2.5rem;
     display: flex;
     justify-content: center;
+    gap: 1.25rem;
 }
 
-.btn-submit {
+.btn-submit, .btn-clear {
     padding: 1rem 2.5rem;
     font-size: 1.05rem;
     width: 100%;
-    max-width: 320px;
     border-radius: 12px;
+}
+
+.btn-submit {
+    max-width: 320px;
+}
+
+.btn-clear {
+    max-width: 200px;
 }
 
 /* ==========================================================================
@@ -867,6 +875,22 @@ section {
     padding: 2rem;
     border-radius: 20px 20px 0 0;
     border-bottom: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.kit-header-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.kit-header-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .kit-title {
@@ -1436,6 +1460,15 @@ section {
     
     .full-width {
         grid-column: span 1;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-submit, .btn-clear {
+        max-width: 100%;
     }
     
     .workflow-grid, .history-grid, .about-grid {
