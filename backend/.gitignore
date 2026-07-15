@@ -1,0 +1,9 @@
+# Dependency packages
+node_modules/
+
+# Local configuration environment secrets
+.env
+
+# System files
+.DS_Store
+Thumbs.db

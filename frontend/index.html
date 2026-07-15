@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PromptLab AI - Design Better Prompts. Build Better Software.</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Glow Blobs -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-wand-magic-sparkles logo-icon"></i>
+                <span class="logo-text">PromptLab <span class="logo-accent">AI</span></span>
+            </a>
+            <nav class="nav">
+                <a href="#hero" class="nav-link">Home</a>
+                <a href="#workflow" class="nav-link">Workflow</a>
+                <a href="#generator" class="nav-link">Generator</a>
+                <a href="#history" class="nav-link">History</a>
+                <a href="#about" class="nav-link">About</a>
+            </nav>
+            <a href="#generator" class="btn btn-nav">Get Started</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="badge animate-fade-in">
+                        <span class="badge-text"><span class="badge-dot"></span> ✨ AI Developer Toolkit</span>
+                    </div>
+                    <h1 class="hero-title animate-fade-in">Design Better Prompts.<br><span class="gradient-text">Build Better Software.</span></h1>
+                    <p class="hero-subtitle animate-fade-in">
+                        Generate AI-powered Developer Prompt Kits that guide developers through Planning, Development, Improvement, and Deployment.
+                    </p>
+                    <div class="hero-actions animate-fade-in">
+                        <a href="#generator" class="btn btn-primary btn-large">
+                            <span>Get Started</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- CSS-only Illustration -->
+                <div class="hero-illustration animate-fade-in-right">
+                    <div class="illustration-container">
+                        <div class="glass-card main-terminal">
+                            <div class="terminal-header">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                                <span class="terminal-title">promptlab-ai-engine</span>
+                            </div>
+                            <div class="terminal-body">
+                                <div class="line"><span class="keyword">const</span> lab = <span class="keyword">new</span> <span class="class-name">PromptLab</span>();</div>
+                                <div class="line"><span class="keyword">await</span> lab.<span class="method">generateKit</span>({</div>
+                                <div class="line indent"><span class="property">project</span>: <span class="string">"SaaS Dashboard"</span>,</div>
+                                <div class="line indent"><span class="property">stack</span>: [<span class="string">"React"</span>, <span class="string">"Node"</span>, <span class="string">"MongoDB"</span>],</div>
+                                <div class="line indent"><span class="property">model</span>: <span class="string">"Gemini-1.5-Pro"</span></div>
+                                <div class="line">});</div>
+                                <div class="line cursor">_</div>
+                            </div>
+                        </div>
+                        <div class="glass-card small-status-card floating-card-1">
+                            <div class="status-icon"><i class="fa-solid fa-bolt text-cyan"></i></div>
+                            <div class="status-details">
+                                <span class="status-label">Optimization</span>
+                                <span class="status-value">Ready</span>
+                            </div>
+                        </div>
+                        <div class="glass-card small-status-card floating-card-2">
+                            <div class="status-icon"><i class="fa-solid fa-shield-halved text-violet"></i></div>
+                            <div class="status-details">
+                                <span class="status-label">Security Shield</span>
+                                <span class="status-value">Active</span>
+                            </div>
+                        </div>
+                        <div class="connector-line line-1"></div>
+                        <div class="connector-line line-2"></div>
+                        <div class="glow-node node-1"></div>
+                        <div class="glow-node node-2"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Workflow Section -->
+        <section id="workflow" class="workflow-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">How PromptLab AI Works</h2>
+                    <p class="section-subtitle">Accelerate your software development lifecycle through engineered prompt sequencing</p>
+                </div>
+                
+                <div class="workflow-grid">
+                    <div class="workflow-card">
+                        <div class="workflow-icon-wrapper">
+                            <i class="fa-solid fa-rectangle-list"></i>
+                        </div>
+                        <h3 class="workflow-step-title">1. Planning</h3>
+                        <p class="workflow-step-desc">
+                            Define project requirements, architecture, API specifications, and development strategy.
+                        </p>
+                        <div class="workflow-step-badge">Architecture</div>
+                    </div>
+                    
+                    <div class="workflow-card">
+                        <div class="workflow-icon-wrapper">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <h3 class="workflow-step-title">2. Development</h3>
+                        <p class="workflow-step-desc">
+                            Generate implementation prompts for frontend, backend, database, and application logic.
+                        </p>
+                        <div class="workflow-step-badge">Implementation</div>
+                    </div>
+                    
+                    <div class="workflow-card">
+                        <div class="workflow-icon-wrapper">
+                            <i class="fa-solid fa-wrench"></i>
+                        </div>
+                        <h3 class="workflow-step-title">3. Improvement</h3>
+                        <p class="workflow-step-desc">
+                            Create prompts for debugging, testing, optimization, security, and code quality.
+                        </p>
+                        <div class="workflow-step-badge">Optimization</div>
+                    </div>
+                    
+                    <div class="workflow-card">
+                        <div class="workflow-icon-wrapper">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                        </div>
+                        <h3 class="workflow-step-title">4. Deployment</h3>
+                        <p class="workflow-step-desc">
+                            Generate deployment prompts for Docker, AWS, CI/CD, production configuration, and monitoring.
+                        </p>
+                        <div class="workflow-step-badge">DevOps</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Generator Section -->
+        <section id="generator" class="generator-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Generate Your Prompt Kit</h2>
+                    <p class="section-subtitle">Provide your stack details to construct tailored prompt blueprints</p>
+                </div>
+
+                <div class="glass-card form-container">
+                    <form id="promptGeneratorForm" novalidate>
+                        <div class="form-grid">
+                            <!-- Project Name -->
+                            <div class="form-group full-width">
+                                <label for="projectName" class="form-label">Project Name</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-regular fa-folder-open input-icon"></i>
+                                    <input type="text" id="projectName" class="form-input" placeholder="e.g. FitTrack Dashboard, DevSync Hub" required>
+                                </div>
+                                <span class="error-msg">Project Name is required</span>
+                            </div>
+
+                            <!-- Description -->
+                            <div class="form-group full-width">
+                                <label for="projectDesc" class="form-label">Project Description</label>
+                                <div class="input-wrapper">
+                                    <textarea id="projectDesc" class="form-textarea" placeholder="Explain what the app does, target users, and key features..." required></textarea>
+                                </div>
+                                <span class="error-msg">Project Description is required</span>
+                            </div>
+
+                            <!-- Language -->
+                            <div class="form-group">
+                                <label for="progLang" class="form-label">Programming Language</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-code input-icon"></i>
+                                    <select id="progLang" class="form-select" required>
+                                        <option value="" disabled selected>Select Language</option>
+                                        <option value="TypeScript">TypeScript</option>
+                                        <option value="JavaScript">JavaScript</option>
+                                        <option value="Python">Python</option>
+                                        <option value="Go">Go</option>
+                                        <option value="Rust">Rust</option>
+                                        <option value="Java">Java</option>
+                                        <option value="C#">C#</option>
+                                    </select>
+                                </div>
+                                <span class="error-msg">Please select a language</span>
+                            </div>
+
+                            <!-- Frontend Framework -->
+                            <div class="form-group">
+                                <label for="frontendFramework" class="form-label">Frontend Framework</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-brands fa-react input-icon"></i>
+                                    <select id="frontendFramework" class="form-select" required>
+                                        <option value="" disabled selected>Select Frontend</option>
+                                        <option value="React & Vite">React & Vite</option>
+                                        <option value="Next.js">Next.js</option>
+                                        <option value="Vue.js">Vue.js</option>
+                                        <option value="SvelteKit">SvelteKit</option>
+                                        <option value="Angular">Angular</option>
+                                        <option value="Vanilla HTML/CSS/JS">Vanilla HTML/CSS/JS</option>
+                                    </select>
+                                </div>
+                                <span class="error-msg">Please select a frontend option</span>
+                            </div>
+
+                            <!-- Backend Framework -->
+                            <div class="form-group">
+                                <label for="backendFramework" class="form-label">Backend Framework</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-server input-icon"></i>
+                                    <select id="backendFramework" class="form-select" required>
+                                        <option value="" disabled selected>Select Backend</option>
+                                        <option value="Express.js (Node)">Express.js (Node)</option>
+                                        <option value="NestJS">NestJS</option>
+                                        <option value="FastAPI">FastAPI</option>
+                                        <option value="Django">Django</option>
+                                        <option value="Spring Boot">Spring Boot</option>
+                                        <option value="Go Fiber / Gin">Go Fiber / Gin</option>
+                                        <option value="Serverless Functions">Serverless Functions</option>
+                                    </select>
+                                </div>
+                                <span class="error-msg">Please select a backend option</span>
+                            </div>
+
+                            <!-- Database -->
+                            <div class="form-group">
+                                <label for="database" class="form-label">Database</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-database input-icon"></i>
+                                    <select id="database" class="form-select" required>
+                                        <option value="" disabled selected>Select Database</option>
+                                        <option value="MongoDB">MongoDB</option>
+                                        <option value="PostgreSQL">PostgreSQL</option>
+                                        <option value="MySQL">MySQL</option>
+                                        <option value="SQLite">SQLite</option>
+                                        <option value="Redis">Redis</option>
+                                        <option value="Supabase DB">Supabase DB</option>
+                                    </select>
+                                </div>
+                                <span class="error-msg">Please select a database</span>
+                            </div>
+
+                            <!-- Deployment Platform -->
+                            <div class="form-group">
+                                <label for="deployPlatform" class="form-label">Deployment Platform</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-cloud-arrow-up input-icon"></i>
+                                    <select id="deployPlatform" class="form-select" required>
+                                        <option value="" disabled selected>Select Platform</option>
+                                        <option value="Vercel">Vercel</option>
+                                        <option value="Render">Render</option>
+                                        <option value="AWS">AWS</option>
+                                        <option value="Heroku">Heroku</option>
+                                        <option value="DigitalOcean">DigitalOcean</option>
+                                        <option value="Docker / Kubernetes Env">Docker / Kubernetes Env</option>
+                                    </select>
+                                </div>
+                                <span class="error-msg">Please select a platform</span>
+                            </div>
+
+                            <!-- AI Model -->
+                            <div class="form-group">
+                                <label for="aiModel" class="form-label">Target AI Model</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-brain input-icon"></i>
+                                    <select id="aiModel" class="form-select" required>
+                                        <option value="" disabled selected>Select AI Model</option>
+                                        <option value="Gemini 1.5 Pro">Gemini 1.5 Pro</option>
+                                        <option value="Gemini 1.5 Flash">Gemini 1.5 Flash</option>
+                                        <option value="GPT-4o">GPT-4o</option>
+                                        <option value="Claude 3.5 Sonnet">Claude 3.5 Sonnet</option>
+                                        <option value="Llama 3 (Open Source)">Llama 3 (Open Source)</option>
+                                    </select>
+                                </div>
+                                <span class="error-msg">Please select an AI model</span>
+                            </div>
+
+                            <!-- Difficulty -->
+                            <div class="form-group full-width">
+                                <label for="difficulty" class="form-label">Target Architecture Level</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-stairs input-icon"></i>
+                                    <select id="difficulty" class="form-select" required>
+                                        <option value="" disabled selected>Select Difficulty Level</option>
+                                        <option value="Beginner">Beginner</option>
+                                        <option value="Intermediate">Intermediate</option>
+                                        <option value="Advanced">Advanced</option>
+                                    </select>
+                                </div>
+                                <span class="error-msg">Please select a difficulty level</span>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary btn-submit">
+                                <i class="fa-solid fa-gears"></i>
+                                <span>Generate Developer Prompt Kit</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Loading State (Initially Hidden) -->
+                <div id="loadingState" class="loading-state hidden">
+                    <div class="spinner-wrapper">
+                        <div class="loading-spinner"></div>
+                        <div class="loading-pulse"></div>
+                    </div>
+                    <p class="loading-text">Generating Developer Prompt Kit...</p>
+                </div>
+
+                <!-- Prompt Kit Result Section (Initially Hidden) -->
+                <div id="promptKitSection" class="prompt-kit-section hidden">
+                    <div class="kit-header">
+                        <h3 class="kit-title"><i class="fa-solid fa-folder-open text-cyan"></i> Generated Kit: <span id="kitProjectTitle">Project Name</span></h3>
+                        <p class="kit-meta">Configured for <strong id="kitModelText">Gemini 1.5 Pro</strong> • Architecture: <span id="kitDiffLabel" class="badge-diff">Intermediate</span></p>
+                    </div>
+
+                    <div class="prompt-cards-container">
+                        <!-- Card 1: Planning -->
+                        <div id="cardPlanning" class="glass-card prompt-card" style="opacity: 0;">
+                            <div class="prompt-card-header">
+                                <div class="prompt-card-title-block">
+                                    <i class="fa-solid fa-rectangle-list icon-planning"></i>
+                                    <div class="title-details">
+                                        <span class="card-tag">Phase 1</span>
+                                        <h4>📋 Planning Prompt</h4>
+                                    </div>
+                                </div>
+                                <div class="prompt-card-actions">
+                                    <button class="btn btn-icon btn-copy" title="Copy Prompt" data-target="promptTextPlanning">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                    <button class="btn btn-icon btn-toggle">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="prompt-card-body expanded">
+                                <div class="prompt-purpose">
+                                    <strong>Purpose:</strong> System design, architecture planning, data schemas, API specifications, and file structures.
+                                </div>
+                                <div class="prompt-content-wrapper">
+                                    <pre class="prompt-content-code"><code id="promptTextPlanning">Prompt content here...</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Development -->
+                        <div id="cardDevelopment" class="glass-card prompt-card" style="opacity: 0;">
+                            <div class="prompt-card-header">
+                                <div class="prompt-card-title-block">
+                                    <i class="fa-solid fa-code icon-development"></i>
+                                    <div class="title-details">
+                                        <span class="card-tag">Phase 2</span>
+                                        <h4>💻 Development Prompt</h4>
+                                    </div>
+                                </div>
+                                <div class="prompt-card-actions">
+                                    <button class="btn btn-icon btn-copy" title="Copy Prompt" data-target="promptTextDevelopment">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                    <button class="btn btn-icon btn-toggle">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="prompt-card-body">
+                                <div class="prompt-purpose">
+                                    <strong>Purpose:</strong> Setup instructions, boilerplate code snippets, key controller structures, frontend components, state integration.
+                                </div>
+                                <div class="prompt-content-wrapper">
+                                    <pre class="prompt-content-code"><code id="promptTextDevelopment">Prompt content here...</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Improvement -->
+                        <div id="cardImprovement" class="glass-card prompt-card" style="opacity: 0;">
+                            <div class="prompt-card-header">
+                                <div class="prompt-card-title-block">
+                                    <i class="fa-solid fa-wrench icon-improvement"></i>
+                                    <div class="title-details">
+                                        <span class="card-tag">Phase 3</span>
+                                        <h4>🔧 Improvement Prompt</h4>
+                                    </div>
+                                </div>
+                                <div class="prompt-card-actions">
+                                    <button class="btn btn-icon btn-copy" title="Copy Prompt" data-target="promptTextImprovement">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                    <button class="btn btn-icon btn-toggle">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="prompt-card-body">
+                                <div class="prompt-purpose">
+                                    <strong>Purpose:</strong> Refactoring guidance, vulnerability scans, database query optimization, edge case safety, unit testing scripts.
+                                </div>
+                                <div class="prompt-content-wrapper">
+                                    <pre class="prompt-content-code"><code id="promptTextImprovement">Prompt content here...</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Deployment -->
+                        <div id="cardDeployment" class="glass-card prompt-card" style="opacity: 0;">
+                            <div class="prompt-card-header">
+                                <div class="prompt-card-title-block">
+                                    <i class="fa-solid fa-cloud-arrow-up icon-deployment"></i>
+                                    <div class="title-details">
+                                        <span class="card-tag">Phase 4</span>
+                                        <h4>☁ Deployment Prompt</h4>
+                                    </div>
+                                </div>
+                                <div class="prompt-card-actions">
+                                    <button class="btn btn-icon btn-copy" title="Copy Prompt" data-target="promptTextDeployment">
+                                        <i class="fa-regular fa-copy"></i>
+                                    </button>
+                                    <button class="btn btn-icon btn-toggle">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="prompt-card-body">
+                                <div class="prompt-purpose">
+                                    <strong>Purpose:</strong> Docker configurations, CI/CD pipeline automation YAML definitions, cloud setup configs, monitoring health scripts.
+                                </div>
+                                <div class="prompt-content-wrapper">
+                                    <pre class="prompt-content-code"><code id="promptTextDeployment">Prompt content here...</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history" class="history-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Prompt Kit History</h2>
+                    <p class="section-subtitle">Quick access to previously configured prompt environments</p>
+                </div>
+
+                <div class="disclaimer-alert">
+                    <div class="disclaimer-icon"><i class="fa-solid fa-circle-info"></i></div>
+                    <div class="disclaimer-text">
+                        <strong>Sandbox Mode:</strong> These records are simulated client-side placeholders. A persistent history registry will become active after MongoDB backend integration.
+                    </div>
+                </div>
+
+                <div class="history-grid" id="historyCardsGrid">
+                    <!-- Loaded dynamically via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">About PromptLab AI</h2>
+                    <p class="section-subtitle">Structured Prompt Engineering for Professional Codebases</p>
+                </div>
+
+                <div class="about-grid">
+                    <div class="glass-card about-card">
+                        <i class="fa-solid fa-cubes about-icon"></i>
+                        <h4>Structural Scaffolding</h4>
+                        <p>PromptLab AI decomposes developers' goals into logical sequential phases. Instead of sending a single huge request to an LLM, we generate separate instructions for Planning, Implementing, Improving, and Launching, yielding cleaner code with fewer hallucinations.</p>
+                    </div>
+
+                    <div class="glass-card about-card">
+                        <i class="fa-solid fa-code-merge about-icon"></i>
+                        <h4>Stack-Tailored Context</h4>
+                        <p>Our template model binds specific project attributes—databases, language specifications, frameworks, and host configurations—directly into system directives. This forces the LLM to write highly aligned, non-generic snippets tailored to your architecture constraints.</p>
+                    </div>
+
+                    <div class="glass-card about-card">
+                        <i class="fa-solid fa-microchip about-icon"></i>
+                        <h4>AI-Model Optimization</h4>
+                        <p>Different AI models require different formatting approaches. Whether you select Gemini, GPT-4, or Claude, PromptLab generates prompt styles optimized for the targeted context window limits and instruction-following capability of that specific model.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <span class="footer-logo">PromptLab <span class="logo-accent">AI</span></span>
+                <p class="footer-desc">Professional Prompt Engineering environments for modern dev workflows.</p>
+            </div>
+            <div class="footer-meta">
+                <span class="footer-powered">Powered by <span class="text-violet">Google Gemini</span></span>
+            </div>
+            <div class="footer-copyright">
+                &copy; 2026 PromptLab AI. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Clipboard Toast Notification -->
+    <div id="toast" class="toast hidden">
+        <i class="fa-solid fa-circle-check text-emerald"></i>
+        <span id="toastMessage">Copied to Clipboard!</span>
+    </div>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+</body>
+</html>
