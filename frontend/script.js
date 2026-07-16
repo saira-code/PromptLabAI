@@ -7,6 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---------------------------------------------------------
     // 1. Initial State & Setup
     // ---------------------------------------------------------
+
+    // Determine the API base URL based on host environment
+    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    const API_BASE = isLocalhost 
+        ? 'http://localhost:5000' 
+        : 'http://PromptLabAI-env.eba-kxm7bpwd.ap-south-1.elasticbeanstalk.com';
     
     // In-memory array to track history cards (No LocalStorage as requested)
     let historyKits = [
@@ -278,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1500);
 
         // POST request to backend API
-        fetch('http://localhost:5000/api/generate', {
+        fetch(`${API_BASE}/api/generate`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
